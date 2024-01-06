@@ -1,0 +1,28 @@
+﻿<Definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+ 
+  <EntityComponents>
+    <EntityComponent xsi:type="MyObjectBuilder_ModStorageComponentDefinition">
+      <Id>
+        <TypeId>ModStorageComponent</TypeId>
+        <SubtypeId>GSF</SubtypeId>
+      </Id>
+      <RegisteredStorageGuids>
+		  
+        <guid>ee8e385d-37bb-42a9-bfb1-96e66bc61e6c</guid>
+        <guid>ceefe4d4-6b04-4edc-93d0-1d7631261911</guid>
+
+		  <guid>4e3c0624-ab55-4a26-99e8-a38039fde656</guid>
+		  <guid>bb8e7ffe-5c05-4e58-b589-eef0ccef7e66</guid>
+		  
+        <guid>d2686842-f4a5-486f-8e77-46058bf9b11f</guid>
+        <guid>0a28bbff-ab2d-4612-be67-f0dacbbaf719</guid>
+		  
+        <guid>2444211c-e89b-4119-b56c-e78df283de1e</guid>
+        <guid>237771a7-a051-46b7-af64-a69fa0587f07</guid>
+
+
+
+	  </RegisteredStorageGuids>
+    </EntityComponent>
+  </EntityComponents>
+</Definitions>

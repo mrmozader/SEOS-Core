@@ -1,0 +1,115 @@
+<?xml version="1.0"?>
+<Definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <PhysicalItems>
+
+	<PhysicalItem xsi:type="MyObjectBuilder_DatapadDefinition">
+		<Id>
+        <TypeId>Datapad</TypeId>
+        <SubtypeId>BlankEPROM</SubtypeId>
+		</Id>
+		<DisplayName>Blank EPROM</DisplayName>
+        <Icon>Textures\GUI\Icons\Component\PWMCircuit_Icon.dds</Icon>
+        <Size>
+            <X>0.2</X>
+            <Y>0.1</Y>
+            <Z>0.2</Z>
+        </Size>
+        <Mass>0.2</Mass>
+		<Volume>0.5</Volume>
+        <Model>Models\Components\PWMCircuit_Small.mwm</Model>
+		<PhysicalMaterial>Metal</PhysicalMaterial>
+ 
+        <MinimalPricePerUnit>100</MinimalPricePerUnit>
+		<MinimumOfferAmount>1</MinimumOfferAmount>
+        <MaximumOfferAmount>200</MaximumOfferAmount>
+        <MinimumOrderAmount>1</MinimumOrderAmount>
+        <MaximumOrderAmount>200</MaximumOrderAmount>
+        <CanPlayerOrder>true</CanPlayerOrder>
+        <MinimumAcquisitionAmount>1</MinimumAcquisitionAmount>
+        <MaximumAcquisitionAmount>200</MaximumAcquisitionAmount>
+    </PhysicalItem>
+
+  <PhysicalItem xsi:type="MyObjectBuilder_DatapadDefinition">
+		<Id>
+        <TypeId>Datapad</TypeId>
+        <SubtypeId>ThrusterEPROM</SubtypeId>
+		</Id>
+      <DisplayName>Thruster GSF-OS EPROM</DisplayName>
+        <Icon>Textures\GUI\Icons\Component\PWMCircuit_Icon.dds</Icon>
+        <Size>
+            <X>0.2</X>
+            <Y>0.1</Y>
+            <Z>0.2</Z>
+        </Size>
+        <Mass>0.2</Mass>
+		<Volume>2</Volume>
+        <Model>Models\Components\PWMCircuit_Small.mwm</Model>
+		<PhysicalMaterial>Metal</PhysicalMaterial>
+ 
+        <MinimalPricePerUnit>100</MinimalPricePerUnit>
+		<MinimumOfferAmount>1</MinimumOfferAmount>
+        <MaximumOfferAmount>20</MaximumOfferAmount>
+        <MinimumOrderAmount>1</MinimumOrderAmount>
+        <MaximumOrderAmount>2</MaximumOrderAmount>
+        <CanPlayerOrder>true</CanPlayerOrder>
+        <MinimumAcquisitionAmount>1</MinimumAcquisitionAmount>
+        <MaximumAcquisitionAmount>2</MaximumAcquisitionAmount>
+    </PhysicalItem>
+
+  <PhysicalItem xsi:type="MyObjectBuilder_DatapadDefinition">
+		<Id>
+        <TypeId>Datapad</TypeId>
+        <SubtypeId>UpgradeEPROM</SubtypeId>
+		</Id>
+      <DisplayName>Upgrade Module GSF-OS EPROM</DisplayName>
+        <Icon>Textures\GUI\Icons\Component\PWMCircuit_Icon.dds</Icon>
+        <Size>
+            <X>0.2</X>
+            <Y>0.1</Y>
+            <Z>0.2</Z>
+        </Size>
+        <Mass>0.2</Mass>
+		<Volume>2</Volume>
+        <Model>Models\Components\PWMCircuit_Small.mwm</Model>
+		<PhysicalMaterial>Metal</PhysicalMaterial>
+ 
+        <MinimalPricePerUnit>100</MinimalPricePerUnit>
+		<MinimumOfferAmount>1</MinimumOfferAmount>
+        <MaximumOfferAmount>20</MaximumOfferAmount>
+        <MinimumOrderAmount>1</MinimumOrderAmount>
+        <MaximumOrderAmount>2</MaximumOrderAmount>
+        <CanPlayerOrder>true</CanPlayerOrder>
+        <MinimumAcquisitionAmount>1</MinimumAcquisitionAmount>
+        <MaximumAcquisitionAmount>2</MaximumAcquisitionAmount>
+    </PhysicalItem>
+
+  <PhysicalItem xsi:type="MyObjectBuilder_DatapadDefinition">
+		<Id>
+        <TypeId>Datapad</TypeId>
+        <SubtypeId>ReactorEPROM</SubtypeId>
+		</Id>
+      <DisplayName>Reactor GSF-OS EPROM</DisplayName>
+        <Icon>Textures\GUI\Icons\Component\PWMCircuit_Icon.dds</Icon>
+        <Size>
+            <X>0.2</X>
+            <Y>0.1</Y>
+            <Z>0.2</Z>
+        </Size>
+        <Mass>0.2</Mass>
+		<Volume>2</Volume>
+        <Model>Models\Components\PWMCircuit_Small.mwm</Model>
+		<PhysicalMaterial>Metal</PhysicalMaterial>
+ 
+        <MinimalPricePerUnit>100</MinimalPricePerUnit>
+		<MinimumOfferAmount>1</MinimumOfferAmount>
+        <MaximumOfferAmount>20</MaximumOfferAmount>
+        <MinimumOrderAmount>1</MinimumOrderAmount>
+        <MaximumOrderAmount>2</MaximumOrderAmount>
+        <CanPlayerOrder>true</CanPlayerOrder>
+        <MinimumAcquisitionAmount>1</MinimumAcquisitionAmount>
+        <MaximumAcquisitionAmount>2</MaximumAcquisitionAmount>
+    </PhysicalItem>
+
+
+	</PhysicalItems>
+</Definitions>

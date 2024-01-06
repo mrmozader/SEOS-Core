@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<Definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Blueprints>
+
+  <Blueprint>
+      <Id>
+        <TypeId>BlueprintDefinition</TypeId>
+        <SubtypeId>BlankEPROM</SubtypeId>
+      </Id>
+      <DisplayName>Blank EPROM</DisplayName>
+      <Icon>Textures\GUI\Icons\component\PWMCircuit_Icon.dds</Icon>
+      <Prerequisites>
+        <Item Amount="1" TypeId="Ingot" SubtypeId="Iron" />
+        <Item Amount="5" TypeId="Ingot" SubtypeId="Silicon" />
+        <Item Amount="1" TypeId="Ingot" SubtypeId="Gold" />
+      </Prerequisites>
+      <Result Amount="1" TypeId="Datapad" SubtypeId="BlankEPROM" />
+      <BaseProductionTimeInSeconds>1</BaseProductionTimeInSeconds>
+    </Blueprint>
+
+    <Blueprint>
+      <Id>
+        <TypeId>BlueprintDefinition</TypeId>
+        <SubtypeId>ThrusterEPROM</SubtypeId>
+      </Id>
+      <DisplayName>Thruster GSF-OS EPROM</DisplayName>
+      <Icon>Textures\GUI\Icons\component\PWMCircuit_Icon.dds</Icon>
+      <Prerequisites>
+        <Item Amount="1" TypeId="Datapad" SubtypeId="BlankEPROM" />
+        <Item Amount="1" TypeId="Datapad" SubtypeId="ThrustOS" />
+      </Prerequisites>
+      <Result Amount="1" TypeId="Datapad" SubtypeId="ThrusterEPROM" />
+      <BaseProductionTimeInSeconds>1</BaseProductionTimeInSeconds>
+    </Blueprint>
+
+    <Blueprint>
+      <Id>
+        <TypeId>BlueprintDefinition</TypeId>
+        <SubtypeId>UpgradeEPROM</SubtypeId>
+      </Id>
+      <DisplayName>Upgrade Module GSF-OS EPROM</DisplayName>
+      <Icon>Textures\GUI\Icons\component\PWMCircuit_Icon.dds</Icon>
+      <Prerequisites>
+        <Item Amount="1" TypeId="Datapad" SubtypeId="BlankEPROM" />
+        <Item Amount="1" TypeId="Datapad" SubtypeId="UpgradeOS" />
+      </Prerequisites>
+      <Result Amount="1" TypeId="Datapad" SubtypeId="UpgradeEPROM" />
+      <BaseProductionTimeInSeconds>1</BaseProductionTimeInSeconds>
+    </Blueprint>
+
+    <Blueprint>
+      <Id>
+        <TypeId>BlueprintDefinition</TypeId>
+        <SubtypeId>ReactorEPROM</SubtypeId>
+      </Id>
+      <DisplayName>Reactor GSF-OS EPROM</DisplayName>
+      <Icon>Textures\GUI\Icons\component\PWMCircuit_Icon.dds</Icon>
+      <Prerequisites>
+        <Item Amount="1" TypeId="Datapad" SubtypeId="BlankEPROM" />
+        <Item Amount="1" TypeId="Datapad" SubtypeId="ReactorOS" />
+      </Prerequisites>
+      <Result Amount="1" TypeId="Datapad" SubtypeId="ReactorEPROM" />
+      <BaseProductionTimeInSeconds>1</BaseProductionTimeInSeconds>
+    </Blueprint>
+
+</Blueprints>
+</Definitions>

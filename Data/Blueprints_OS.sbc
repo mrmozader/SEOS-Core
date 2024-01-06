@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<Definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Blueprints>
+
+    <Blueprint>
+      <Id>
+        <TypeId>BlueprintDefinition</TypeId>
+        <SubtypeId>AdminCase</SubtypeId>
+      </Id>
+      <DisplayName>Admin Case</DisplayName>
+      <Icon>Textures\GUI\Icons\component\construction_components_component.dds</Icon>
+      <Prerequisites>
+        <Item Amount="8" TypeId="Ingot" SubtypeId="Iron" />
+      </Prerequisites>
+      <Result Amount="1" TypeId="Component" SubtypeId="AdminCase" />
+      <BaseProductionTimeInSeconds>1</BaseProductionTimeInSeconds>
+    </Blueprint>
+
+	<Blueprint>
+      <Id>
+        <TypeId>BlueprintDefinition</TypeId>
+        <SubtypeId>BlankOS</SubtypeId>
+      </Id>
+      <DisplayName>Blank OS Pad</DisplayName>
+      <Icon>Textures\GUI\Icons\Items\Datapad_Item.dds</Icon>
+      <Prerequisites>
+        <Item Amount="1" TypeId="Ingot" SubtypeId="Iron" />
+        <Item Amount="5" TypeId="Ingot" SubtypeId="Silicon" />
+        <Item Amount="1" TypeId="Ingot" SubtypeId="Gold" />
+      </Prerequisites>
+      <Result Amount="1" TypeId="Datapad" SubtypeId="BlankOS" />
+      <BaseProductionTimeInSeconds>1</BaseProductionTimeInSeconds>
+    </Blueprint>
+
+    <Blueprint>
+      <Id>
+        <TypeId>BlueprintDefinition</TypeId>
+        <SubtypeId>ThrustOS</SubtypeId>
+      </Id>
+      <DisplayName>Thruster GSF-OS</DisplayName>
+      <Icon>Textures\GUI\Icons\Items\Datapad_Item.dds</Icon>
+      <Prerequisites>
+        <Item Amount="1" TypeId="Datapad" SubtypeId="BlankOS" />
+      </Prerequisites>
+      <Result Amount="1" TypeId="Datapad" SubtypeId="ThrustOS" />
+      <BaseProductionTimeInSeconds>100</BaseProductionTimeInSeconds>
+    </Blueprint>
+
+    <Blueprint>
+      <Id>
+        <TypeId>BlueprintDefinition</TypeId>
+        <SubtypeId>UpgradeOS</SubtypeId>
+      </Id>
+      <DisplayName>Upgrade Module GSF-OS</DisplayName>
+      <Icon>Textures\GUI\Icons\Items\Datapad_Item.dds</Icon>
+      <Prerequisites>
+        <Item Amount="1" TypeId="Datapad" SubtypeId="BlankOS" />
+      </Prerequisites>
+      <Result Amount="1" TypeId="Datapad" SubtypeId="UpgradeOS" />
+      <BaseProductionTimeInSeconds>1</BaseProductionTimeInSeconds>
+    </Blueprint>
+
+    <Blueprint>
+      <Id>
+        <TypeId>BlueprintDefinition</TypeId>
+        <SubtypeId>ReactorOS</SubtypeId>
+      </Id>
+      <DisplayName>Reactor GSF-OS</DisplayName>
+      <Icon>Textures\GUI\Icons\Items\Datapad_Item.dds</Icon>
+      <Prerequisites>
+        <Item Amount="1" TypeId="Datapad" SubtypeId="BlankOS" />
+      </Prerequisites>
+      <Result Amount="1" TypeId="Datapad" SubtypeId="ReactorOS" />
+      <BaseProductionTimeInSeconds>1</BaseProductionTimeInSeconds>
+    </Blueprint>
+
+
+
+
+
+</Blueprints>
+</Definitions>

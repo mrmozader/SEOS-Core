@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <CubeBlocks>
+
+
+	  
+	  
+	  
+	  
+	  <!-- region Thrusters -->
+	  <Definition xsi:type="MyObjectBuilder_ThrustDefinition">
+		  <Id>
+			  <TypeId>Thrust</TypeId>
+			  <SubtypeId>SEOSThruster</SubtypeId>
+		  </Id>
+		  <DisplayName>SEOS Thruster</DisplayName>
+		  <Icon>Textures\GUI\Icons\Cubes\thrust.dds</Icon>
+		  <Description>Description_IonThrust</Description>
+		  <CubeSize>Large</CubeSize>
+		  <GuiVisible>false</GuiVisible>
+		  <BlockTopology>TriangleMesh</BlockTopology>
+		  <Size x="1" y="1" z="2" />
+		  <ModelOffset x="0" y="0" z="0" />
+		  <Model>Models\Cubes\Large\ThrustSmall.mwm</Model>
+		  <ThrusterType>Ion</ThrusterType>
+		  <SilenceableByShipSoundSystem>true</SilenceableByShipSoundSystem>
+		  <Components>
+			  <Component Subtype="SteelPlate" Count="10" />
+			  <Component Subtype="Construction" Count="4" />
+			  <Component Subtype="LargeTube" Count="1" />
+			  <Component Subtype="Thrust" Count="10" />
+			  <Component Subtype="AdminCase" Count="1" />
+			  <Component Subtype="Construction" Count="2" />
+			  <Component Subtype="SteelPlate" Count="10" />
+			  
+		  </Components>
+		  <CriticalComponent Subtype="AdminCase" Index="0" />
+		  <MountPoints>
+			  <MountPoint Side="Back" StartX="0" StartY="0" EndX="1" EndY="1" Default="true" />
+			  <MountPoint Side="Top" StartX="0" StartY="0" EndX="1" EndY="1" />
+			  <MountPoint Side="Bottom" StartX="0" StartY="1" EndX="1" EndY="2" />
+			  <MountPoint Side="Left" StartX="1" StartY="0" EndX="2" EndY="1" />
+			  <MountPoint Side="Right" StartX="0" StartY="0" EndX="1" EndY="1" />
+		  </MountPoints>
+		  <BuildProgressModels>
+			  <Model BuildPercentUpperBound="0.33" File="Models\Cubes\Large\ThrustSmallConstruction_1.mwm" />
+			  <Model BuildPercentUpperBound="0.66" File="Models\Cubes\Large\ThrustSmallConstruction_2.mwm" />
+			  <Model BuildPercentUpperBound="1.00" File="Models\Cubes\Large\ThrustSmallConstruction_3.mwm" />
+		  </BuildProgressModels>
+		  <VoxelPlacement>
+			  <!--Possible settings Both,InVoxel,OutsideVoxel,Volumetric. If volumetric set than MaxAllowed and MinAllowed will be used.-->
+			  <StaticMode>
+				  <PlacementMode>Volumetric</PlacementMode>
+				  <MaxAllowed>0.2</MaxAllowed>
+				  <MinAllowed>0</MinAllowed>
+			  </StaticMode>
+			  <DynamicMode>
+				  <PlacementMode>Volumetric</PlacementMode>
+				  <MaxAllowed>0.2</MaxAllowed>
+				  <MinAllowed>0</MinAllowed>
+			  </DynamicMode>
+		  </VoxelPlacement>
+		 <!--<BlockPairName>SmallThrust</BlockPairName>--> 
+		  <Center x="0" y="0" z="1" />
+		  <MirroringY>Z</MirroringY>
+		  <MirroringZ>Y</MirroringZ>
+		  <EdgeType>Light</EdgeType>
+		  <BuildTimeSeconds>40</BuildTimeSeconds>
+
+		  <ResourceSinkGroup>Thrust</ResourceSinkGroup>
+		  <ForceMagnitude>345600</ForceMagnitude>
+		  <MaxPowerConsumption>3.36</MaxPowerConsumption>
+		  <MinPowerConsumption>0.000002</MinPowerConsumption>
+		  <SlowdownFactor>1</SlowdownFactor>
+
+		  <MinPlanetaryInfluence>0</MinPlanetaryInfluence>
+		  <MaxPlanetaryInfluence>1</MaxPlanetaryInfluence>
+		  <EffectivenessAtMinInfluence>1</EffectivenessAtMinInfluence>
+		  <EffectivenessAtMaxInfluence>0.2</EffectivenessAtMaxInfluence>
+
+		  <FlameDamageLengthScale>0.61</FlameDamageLengthScale>
+		  <FlameLengthScale>1.5</FlameLengthScale>
+		  <FlameIdleColor>
+			  <X>0.3745098</X>
+			  <Y>0.5090196</Y>
+			  <Z>0.1505882</Z>
+			  <W>0.65</W>
+		  </FlameIdleColor>
+		  <FlameFullColor>
+			  <X>0.3745098</X>
+			  <Y>0.5090196</Y>
+			  <Z>0.1505882</Z>
+			  <W>0.35</W>
+		  </FlameFullColor>
+		  <FlamePointMaterial>EngineThrustMiddle</FlamePointMaterial>
+		  <FlameLengthMaterial>EngineThrustMiddle</FlameLengthMaterial>
+		  <FlameFlare>LargeGridSmallThruster</FlameFlare>
+		  <FlameVisibilityDistance>500</FlameVisibilityDistance>
+		  <FlameGlareQuerySize>1</FlameGlareQuerySize>
+		  <PrimarySound>LrgShipSmJet</PrimarySound>
+		  <DamageEffectName>Damage_WeapExpl_Damaged</DamageEffectName>
+		  <DamagedSound>ParticleWeapExpl</DamagedSound>
+		  <DestroyEffect>BlockDestroyedExplosion_Large</DestroyEffect>
+		  <DestroySound>WepSmallWarheadExpl</DestroySound>
+		  <PCU>15</PCU>
+		  <TieredUpdateTimes>
+			  <unsignedInt>100</unsignedInt>
+			  <unsignedInt>3600</unsignedInt>
+			  <unsignedInt>0</unsignedInt>
+		  </TieredUpdateTimes>
+		  <TargetingGroups>
+			  <string>Propulsion</string>
+		  </TargetingGroups>
+	  </Definition>
+	  <!-- End region Thrusters -->
+	  
+	  
+	  <!-- region Terminals -->
+       <Definition xsi:type="MyObjectBuilder_UpgradeModuleDefinition">
+            <Id>
+                <TypeId>UpgradeModule</TypeId>
+                <SubtypeId>SEOSTerminal</SubtypeId>
+            </Id>
+            <DisplayName>SEOS Terminal</DisplayName>
+            <Icon>Textures\GUI\Icons\Cubes\UpgradeProductivity.dds</Icon>
+            <Description>Description_ProductivityModule</Description>
+            <CubeSize>Large</CubeSize>
+            <BlockTopology>TriangleMesh</BlockTopology>
+            <Size x="1" y="1" z="2" />
+            <ModelOffset x="0" y="0" z="0" />
+            <Model>Models\Cubes\Large\UpgradeProductivity.mwm</Model>
+            <Components>
+                <Component Subtype="SteelPlate" Count="80" />
+                <Component Subtype="Construction" Count="40" />
+                <Component Subtype="SmallTube" Count="20" />
+                <Component Subtype="Computer" Count="60" />
+                <Component Subtype="Motor" Count="4" />
+                <Component Subtype="SteelPlate" Count="20" />
+            </Components>
+            <CriticalComponent Subtype="Motor" Index="0" />
+            <MountPoints>
+                <MountPoint Side="Right" StartX="0.15" StartY="0.15" EndX="1.85" EndY="0.85" Default="true" />
+                <MountPoint Side="Left" StartX="0.15" StartY="0.15" EndX="1.85" EndY="0.85" />
+                <MountPoint Side="Top" StartX="0.15" StartY="0.15" EndX="0.85" EndY="1.85" />
+                <MountPoint Side="Bottom" StartX="0.15" StartY="0.15" EndX="0.85" EndY="1.85" />
+                <MountPoint Side="Front" StartX="0.15" StartY="0.15" EndX="0.85" EndY="0.85" />
+                <MountPoint Side="Back" StartX="0.15" StartY="0.15" EndX="0.85" EndY="0.85" />
+            </MountPoints>
+            <BuildProgressModels>
+                <Model BuildPercentUpperBound="0.33" File="Models\Cubes\Large\UpgradeProductivityConstruction_1.mwm" />
+                <Model BuildPercentUpperBound="0.66" File="Models\Cubes\Large\UpgradeProductivityConstruction_2.mwm" />
+                <Model BuildPercentUpperBound="1.00" File="Models\Cubes\Large\UpgradeProductivityConstruction_3.mwm" />
+            </BuildProgressModels>
+            <BlockPairName>ProductivityModule</BlockPairName>
+            <MirroringX>Z</MirroringX>
+            <MirroringZ>X</MirroringZ>
+            <EdgeType>Light</EdgeType>
+            <Upgrades>
+                <MyUpgradeModuleInfo>
+                    <UpgradeType>Productivity</UpgradeType>
+                    <Modifier>0.5</Modifier>
+                    <ModifierType>Additive</ModifierType>
+                </MyUpgradeModuleInfo>
+            </Upgrades>
+            <PrimarySound>BlockModuleProductivity</PrimarySound>
+            <DamageEffectName>Damage_Electrical_Damaged</DamageEffectName>
+            <DamagedSound>ParticleElectrical</DamagedSound>
+            <EmissiveColorPreset>Default</EmissiveColorPreset>
+            <DestroyEffect>BlockDestroyedExplosion_Large</DestroyEffect>
+            <DestroySound>WepSmallWarheadExpl</DestroySound>
+            <PCU>1</PCU>
+            <IsAirTight>false</IsAirTight>
+        </Definition>
+	  <!-- End region Terminals -->
+	  
+	  
+	  <!-- Region Burners -->
+	<Definition xsi:type="MyObjectBuilder_AssemblerDefinition">
+		  <Id>
+			  <TypeId>Assembler</TypeId>
+			  <SubtypeId>ROMBurner</SubtypeId>
+		  </Id>
+		  <DisplayName>SEOS ROMBurner</DisplayName>
+		  <Icon>Textures\GUI\Icons\Cubes\basicAssembler.dds</Icon>
+		  <Description>Description_Assembler</Description>
+		  <CubeSize>Large</CubeSize>
+		  <BlockTopology>TriangleMesh</BlockTopology>
+		  <Size x="1" y="1" z="1" />
+		  <ModelOffset x="0" y="0" z="0" />
+		  <Model>Models\Cubes\Large\BasicAssembler.mwm</Model>
+		  <Components>
+			  <Component Subtype="SteelPlate" Count="60" />
+			  <Component Subtype="Construction" Count="40" />
+			  <Component Subtype="Motor" Count="10" />
+			  <Component Subtype="Display" Count="4" />
+			  <Component Subtype="Computer" Count="80" />
+			  <Component Subtype="SteelPlate" Count="20" />
+		  </Components>
+		  <CriticalComponent Subtype="Computer" Index="0" />
+		  <MountPoints>
+			  <MountPoint Side="Front" StartX="0" StartY="0" EndX="1" EndY="1" />
+			  <MountPoint Side="Back" StartX="0" StartY="0" EndX="1" EndY="1" />
+			  <MountPoint Side="Bottom" StartX="0" StartY="0" EndX="1" EndY="1" Default="true" />
+			  <MountPoint Side="Top" StartX="0" StartY="0" EndX="1" EndY="1" />
+			  <MountPoint Side="Left" StartX="0" StartY="0" EndX="1" EndY="1" />
+			  <MountPoint Side="Right" StartX="0" StartY="0" EndX="1" EndY="1" />
+		  </MountPoints>
+		  <BuildProgressModels>
+			  <Model BuildPercentUpperBound="0.33" File="Models\Cubes\Large\BasicAssembler_Construction1.mwm" />
+			  <Model BuildPercentUpperBound="0.66" File="Models\Cubes\Large\BasicAssembler_Construction2.mwm" />
+			  <Model BuildPercentUpperBound="1.00" File="Models\Cubes\Large\BasicAssembler_Construction3.mwm" />
+		  </BuildProgressModels>
+		  
+		  <EdgeType>Light</EdgeType>
+		  <BuildTimeSeconds>40</BuildTimeSeconds>
+		  <ResourceSinkGroup>Factory</ResourceSinkGroup>
+		  <InventoryMaxVolume>0.0025</InventoryMaxVolume>
+		  <InventorySize>
+			  <X>1</X>
+			  <Y>1</Y>
+			  <Z>1</Z>
+		  </InventorySize>
+		  <StandbyPowerConsumption>0.001</StandbyPowerConsumption>
+		  <OperationalPowerConsumption>0.56</OperationalPowerConsumption>
+		  <BlueprintClasses>
+			  <Class>EPROM</Class>
+		  </BlueprintClasses>
+		  <DamageEffectName>Damage_HeavyMech_Damaged</DamageEffectName>
+		  <DamagedSound>ParticleHeavyMech</DamagedSound>
+		  <PrimarySound>BlockAssembler</PrimarySound>
+		  <ActionSound>BlockAssemblerProcess</ActionSound>
+		  <DestroyEffect>Explosion_Missile</DestroyEffect>
+		  <DestroySound>WepSmallMissileExpl</DestroySound>
+		  <PCU>40</PCU>
+		  <IsAirTight>true</IsAirTight>
+	  </Definition>
+
+	<Definition xsi:type="MyObjectBuilder_AssemblerDefinition">
+      <Id>
+        <TypeId>Assembler</TypeId>
+        <SubtypeId>OSBurner</SubtypeId>
+      </Id>
+      <DisplayName>SEOS OSBurner</DisplayName>
+      <Icon>Textures\GUI\Icons\Cubes\basicAssembler.dds</Icon>
+      <Description>Description_Assembler</Description>
+      <CubeSize>Large</CubeSize>
+      <BlockTopology>TriangleMesh</BlockTopology>
+      <Size x="1" y="1" z="1" />
+      <ModelOffset x="0" y="0" z="0" />
+	<Model>Models\Cubes\Large\BasicAssembler.mwm</Model>
+      <Components>
+        <Component Subtype="SteelPlate" Count="60" />
+        <Component Subtype="Construction" Count="40" />
+        <Component Subtype="Motor" Count="10" />
+        <Component Subtype="Display" Count="4" />
+        <Component Subtype="Computer" Count="80" />
+        <Component Subtype="SteelPlate" Count="20" />
+      </Components>
+      <CriticalComponent Subtype="Computer" Index="0" />
+      <MountPoints>
+        <MountPoint Side="Front" StartX="0" StartY="0" EndX="1" EndY="1" />
+        <MountPoint Side="Back" StartX="0" StartY="0" EndX="1" EndY="1" />
+        <MountPoint Side="Bottom" StartX="0" StartY="0" EndX="1" EndY="1" Default="true" />
+        <MountPoint Side="Top" StartX="0" StartY="0" EndX="1" EndY="1" />
+        <MountPoint Side="Left" StartX="0" StartY="0" EndX="1" EndY="1" />
+        <MountPoint Side="Right" StartX="0" StartY="0" EndX="1" EndY="1" />
+      </MountPoints>
+      <BuildProgressModels>
+        <Model BuildPercentUpperBound="0.33" File="Models\Cubes\Large\BasicAssembler_Construction1.mwm" />
+        <Model BuildPercentUpperBound="0.66" File="Models\Cubes\Large\BasicAssembler_Construction2.mwm" />
+        <Model BuildPercentUpperBound="1.00" File="Models\Cubes\Large\BasicAssembler_Construction3.mwm" />
+      </BuildProgressModels>
+      
+      <EdgeType>Light</EdgeType>
+      <BuildTimeSeconds>40</BuildTimeSeconds>
+      <ResourceSinkGroup>Factory</ResourceSinkGroup>
+      <InventoryMaxVolume>100.0</InventoryMaxVolume>
+      <InventorySize>
+        <X>1</X>
+        <Y>1</Y>
+        <Z>1</Z>
+      </InventorySize>
+      <StandbyPowerConsumption>0.001</StandbyPowerConsumption>
+      <OperationalPowerConsumption>0.56</OperationalPowerConsumption>
+      <BlueprintClasses>
+        <Class>EPROMOS</Class>
+      </BlueprintClasses>
+      <DamageEffectName>Damage_HeavyMech_Damaged</DamageEffectName>
+      <DamagedSound>ParticleHeavyMech</DamagedSound>
+      <PrimarySound>BlockAssembler</PrimarySound>
+      <ActionSound>BlockAssemblerProcess</ActionSound>
+      <DestroyEffect>Explosion_Missile</DestroyEffect>
+      <DestroySound>WepSmallMissileExpl</DestroySound>
+      <PCU>40</PCU>
+      <IsAirTight>true</IsAirTight>      
+    </Definition>
+	  <!-- End region Burners -->
+  </CubeBlocks>
+</Definitions>

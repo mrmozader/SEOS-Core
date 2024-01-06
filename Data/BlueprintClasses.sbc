@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<Definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <BlueprintClasses>
+    <Class>
+      <Id>                   
+        <TypeId>BlueprintClassDefinition</TypeId>
+        <SubtypeId>EPROM</SubtypeId>
+      </Id>
+      <DisplayName>EPROM</DisplayName>
+      <Icon>Textures\GUI\Icons\buttons\component.dds</Icon>
+      <HighlightIcon>Textures\GUI\Icons\buttons\component_highlight.dds</HighlightIcon>
+      <InputConstraintIcon>Textures\GUI\Icons\filter_ingot.dds</InputConstraintIcon>
+    </Class>
+    <Class>
+      <Id>                   
+        <TypeId>BlueprintClassDefinition</TypeId>
+        <SubtypeId>EPROMOS</SubtypeId>
+      </Id>
+      <DisplayName>EPROM</DisplayName>
+      <Icon>Textures\GUI\Icons\buttons\component.dds</Icon>
+      <HighlightIcon>Textures\GUI\Icons\buttons\component_highlight.dds</HighlightIcon>
+      <InputConstraintIcon>Textures\GUI\Icons\filter_ingot.dds</InputConstraintIcon>
+    </Class>
+  </BlueprintClasses>
+  <BlueprintClassEntries>
+   
+    
+    <Entry Class="EPROM" BlueprintSubtypeId="ThrusterEPROM" />
+    <Entry Class="EPROM" BlueprintSubtypeId="UpgradeEPROM" />
+    <Entry Class="EPROM" BlueprintSubtypeId="ReactorEPROM" />
+
+    
+    <Entry Class="Components" BlueprintSubtypeId="BlankEPROM" />
+
+    <Entry Class="EPROMOS" BlueprintSubtypeId="BlankOS" />
+    <Entry Class="EPROMOS" BlueprintSubtypeId="ThrustOS" />
+    <Entry Class="EPROMOS" BlueprintSubtypeId="UpgradeOS" />
+    <Entry Class="EPROMOS" BlueprintSubtypeId="ReactorOS" />
+    <Entry Class="EPROMOS" BlueprintSubtypeId="AdminCase" />
+
+  </BlueprintClassEntries>
+</Definitions>

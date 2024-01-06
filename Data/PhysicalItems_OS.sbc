@@ -1,0 +1,115 @@
+<?xml version="1.0"?>
+<Definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <PhysicalItems>
+
+    <PhysicalItem xsi:type="MyObjectBuilder_DatapadDefinition">
+      <Id>
+        <TypeId>Datapad</TypeId>
+        <SubtypeId>BlankOS</SubtypeId>
+      </Id>
+      <DisplayName>Blank OS Pad</DisplayName>
+      <Icon>Textures\GUI\Icons\Items\Datapad_Item.dds</Icon>
+      <Size>
+        <X>0.2</X>
+        <Y>0.1</Y>
+        <Z>0.2</Z>
+      </Size>
+      <Mass>0.2</Mass>
+      <Volume>0.5</Volume>
+      <Model>Models\Items\Datapad_Item.mwm</Model>
+      <PhysicalMaterial>Metal</PhysicalMaterial>
+
+      <MinimalPricePerUnit>100</MinimalPricePerUnit>
+      <MinimumOfferAmount>1</MinimumOfferAmount>
+      <MaximumOfferAmount>20</MaximumOfferAmount>
+      <MinimumOrderAmount>1</MinimumOrderAmount>
+      <MaximumOrderAmount>2</MaximumOrderAmount>
+      <CanPlayerOrder>true</CanPlayerOrder>
+      <MinimumAcquisitionAmount>1</MinimumAcquisitionAmount>
+      <MaximumAcquisitionAmount>2</MaximumAcquisitionAmount>
+    </PhysicalItem>
+
+    <PhysicalItem xsi:type="MyObjectBuilder_DatapadDefinition">
+      <Id>
+        <TypeId>Datapad</TypeId>
+        <SubtypeId>ThrustOS</SubtypeId>
+      </Id>
+      <DisplayName>Thruster GSF-OS Software</DisplayName>
+      <Icon>Textures\GUI\Icons\Items\Datapad_Item.dds</Icon>
+      <Size>
+        <X>0.2</X>
+        <Y>0.1</Y>
+        <Z>0.2</Z>
+      </Size>
+      <Mass>0.2</Mass>
+      <Volume>2</Volume>
+      <Model>Models\Items\Datapad_Item.mwm</Model>
+      <PhysicalMaterial>Metal</PhysicalMaterial>
+
+      <MinimalPricePerUnit>100</MinimalPricePerUnit>
+      <MinimumOfferAmount>1</MinimumOfferAmount>
+      <MaximumOfferAmount>1</MaximumOfferAmount>
+      <MinimumOrderAmount>1</MinimumOrderAmount>
+      <MaximumOrderAmount>1</MaximumOrderAmount>
+      <CanPlayerOrder>true</CanPlayerOrder>
+      <MinimumAcquisitionAmount>1</MinimumAcquisitionAmount>
+      <MaximumAcquisitionAmount>2</MaximumAcquisitionAmount>
+    </PhysicalItem>
+
+    <PhysicalItem xsi:type="MyObjectBuilder_DatapadDefinition">
+      <Id>
+        <TypeId>Datapad</TypeId>
+        <SubtypeId>UpgradeOS</SubtypeId>
+      </Id>
+      <DisplayName>Upgrade Module GSF-OS Software</DisplayName>
+      <Icon>Textures\GUI\Icons\Items\Datapad_Item.dds</Icon>
+      <Size>
+        <X>0.2</X>
+        <Y>0.1</Y>
+        <Z>0.2</Z>
+      </Size>
+      <Mass>0.2</Mass>
+      <Volume>2</Volume>
+      <Model>Models\Items\Datapad_Item.mwm</Model>
+      <PhysicalMaterial>Metal</PhysicalMaterial>
+
+      <MinimalPricePerUnit>100</MinimalPricePerUnit>
+      <MinimumOfferAmount>1</MinimumOfferAmount>
+      <MaximumOfferAmount>20</MaximumOfferAmount>
+      <MinimumOrderAmount>1</MinimumOrderAmount>
+      <MaximumOrderAmount>2</MaximumOrderAmount>
+      <CanPlayerOrder>true</CanPlayerOrder>
+      <MinimumAcquisitionAmount>1</MinimumAcquisitionAmount>
+      <MaximumAcquisitionAmount>2</MaximumAcquisitionAmount>
+    </PhysicalItem>
+
+    <PhysicalItem xsi:type="MyObjectBuilder_DatapadDefinition">
+      <Id>
+        <TypeId>Datapad</TypeId>
+        <SubtypeId>ReactorOS</SubtypeId>
+      </Id>
+      <DisplayName>Reactor GSF-OS Software</DisplayName>
+      <Icon>Textures\GUI\Icons\Items\Datapad_Item.dds</Icon>
+      <Size>
+        <X>0.2</X>
+        <Y>0.1</Y>
+        <Z>0.2</Z>
+      </Size>
+      <Mass>0.2</Mass>
+      <Volume>2</Volume>
+      <Model>Models\Items\Datapad_Item.mwm</Model>
+      <PhysicalMaterial>Metal</PhysicalMaterial>
+
+      <MinimalPricePerUnit>100</MinimalPricePerUnit>
+      <MinimumOfferAmount>1</MinimumOfferAmount>
+      <MaximumOfferAmount>20</MaximumOfferAmount>
+      <MinimumOrderAmount>1</MinimumOrderAmount>
+      <MaximumOrderAmount>2</MaximumOrderAmount>
+      <CanPlayerOrder>true</CanPlayerOrder>
+      <MinimumAcquisitionAmount>1</MinimumAcquisitionAmount>
+      <MaximumAcquisitionAmount>2</MaximumAcquisitionAmount>
+    </PhysicalItem>
+
+
+  </PhysicalItems>
+</Definitions>
