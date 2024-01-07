@@ -1,0 +1,2 @@
+C:\Windows.old\Users\USER\AppData\Roaming\SpaceEngineers\Mods\SEOS CORE\Data\Scripts\SEOS\obj\Debug\SEOS.csproj.AssemblyReference.cache
+C:\Windows.old\Users\USER\AppData\Roaming\SpaceEngineers\Mods\SEOS CORE\Data\Scripts\SEOS\obj\Debug\SEOS.csproj.CoreCompileInputs.cache

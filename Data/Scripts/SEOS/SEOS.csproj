@@ -118,11 +118,15 @@
     <Compile Include="Network_Base\Network_Essentials_SerializedValues.cs" />
     <Compile Include="Network_Base\Network_Enforcement.cs" />
     <Compile Include="Network_Base\Network_SerializedDataBase.cs" />
+    <Compile Include="SEOS\Logging\SessionLog.cs" />
+    <Compile Include="SEOS\Logic\Session_Overrides.cs" />
+    <Compile Include="SEOS\Logic\Session_Player_Events.cs" />
+    <Compile Include="SEOS\Logic\Session_Server_Management.cs" />
+    <Compile Include="SEOS\Logic\Session_Server_Subscriptions.cs" />
     <Compile Include="SEOS\UI\Base\Terminal_UI_Session_Custom_Config.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SEOS\Logic\Session_Fields.cs" />
     <Compile Include="SEOS\Network\Session_Network.cs" />
-    <Compile Include="SEOS\Logic\Session_Run.cs" />
     <Compile Include="SEOS\Security\Session_Security.cs" />
     <Compile Include="Utils\Support.cs" />
     <Compile Include="Utils\SupportClasses.cs" />

@@ -1,0 +1,10 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/Data/Scripts/SEOS/.vs/SEOS/FileContentIndex/0768f754-41fd-44af-8a11-8c7773aedd0f.vsidx
+*.vsidx
+/Data/Scripts/SEOS/.vs/SEOS/FileContentIndex/1618d063-3995-443d-8f32-5d7b32389ee2.vsidx
+/Data/Scripts/SEOS/.vs/SEOS/FileContentIndex/b40cd308-ccbf-4dcc-99a4-58d76539dfa7.vsidx
+/Data/Scripts/SEOS/.vs/SEOS/FileContentIndex/c4cb295e-5253-41e6-a1b1-47ed06d7d383.vsidx
+/Data/Scripts/SEOS/.vs/SEOS/FileContentIndex/ea150beb-9851-44b3-8470-f26bec11bd57.vsidx
