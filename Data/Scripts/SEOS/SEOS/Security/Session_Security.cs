@@ -12,7 +12,7 @@ namespace SEOS.Core
             // Case: Live Mode 
             if (Approved())
             {
-                SessionLog.Line($"{Bot} Published Mode ");
+                SessionLog.Line($"{Bot} Published Mode");
             }
                        
             // Case: Debug Mode Offline
@@ -106,18 +106,18 @@ namespace SEOS.Core
                 case "Network":
                     MyAPIGateway.Utilities.ShowMessage(Bot, $"\n Dev Mode:{DevEnabled()} - \n Compromised:{Compromised()}");
                     SessionLog.Line($"{Bot} - Mod Id:{WorkshopId} - Dev Mode:{DevEnabled()} - Compromised:{Compromised()}");
-                    break;
+                break;
 
                 case "Security":
                     MyAPIGateway.Utilities.ShowMessage(Bot, $"\n Server:{IsServer} - \n Dedicated:{DedicatedServer} - \n MpActive:{MpActive}");
                     SessionLog.Line($"{Bot} Server:{IsServer} - Dedicated:{DedicatedServer} - MpActive:{MpActive}");
-                    break;
+                break;
 
                 case "Compromised":
                     MyAPIGateway.Utilities.ShowMessage(Bot, $" {MyAPIGateway.Session.Player.DisplayName} Unliscensed software detected ");
                     MyAPIGateway.Utilities.ShowMessage(Bot, "Please contact SEOS team to liscense a copy of this code for own mods");
                     MyAPIGateway.Utilities.ShowMessage(Bot, "Disableing Internal logic");
-                    break;
+                break;
 
                 case "Admin Message":
                     var admin = Admins[MyAPIGateway.Multiplayer.MyId];
@@ -135,12 +135,12 @@ namespace SEOS.Core
                               $"\n[Animation Visual Distance]: " + mod.Vdist.ToString();
 
                     MyAPIGateway.Utilities.ShowMissionScreen(ModEnforcement.ModName, "Admin Mode:", $"{MyAPIGateway.Session.Player.DisplayName} Admin Config", Message, null, $"Continue");
-                   //Message = "";
-                    break;
+
+                break;
 
                 default:
                     
-                    break;
+                break;
             }
         }
 
