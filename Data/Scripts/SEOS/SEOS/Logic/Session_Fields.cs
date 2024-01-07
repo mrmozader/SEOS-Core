@@ -35,7 +35,6 @@
         public DateTime Date = DateTime.Today;
         public DateTime Time = DateTime.Now;
 
-
         internal long LastTerminalId { get; set; }
         public IMyPlayer LocalPlayer { get; set; }
         internal bool BurnerAction { get; set; }

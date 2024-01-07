@@ -27,13 +27,24 @@ namespace SEOS.Core
         {
             try
             {
-                preInit();
+
+                MpActive = MyAPIGateway.Multiplayer.MultiplayerActive;
+                IsServer = MyAPIGateway.Multiplayer.IsServer;
+                DedicatedServer = MyAPIGateway.Utilities.IsDedicated;
+
+                //RichHudClient.Init("Text Editor Example", HudInit, ClientReset);
+
+                SessionLog.Line($"{Bot} Init Rich Hud Client");
+                SessionLog.Init(LogName + ".log");
 
                 if (!DedicatedServer && IsServer)
                     Players.TryAdd(MyAPIGateway.Session.Player.IdentityId, MyAPIGateway.Session.Player);
 
-                subscribeMessageHandler(true);
-                subscribePlayerEvents(true);
+                MyAPIGateway.Multiplayer.RegisterMessageHandler(PACKET_ID, ReceivedPacket);
+
+                MyVisualScriptLogicProvider.PlayerDisconnected += PlayerDisconnected;
+                MyVisualScriptLogicProvider.PlayerRespawnRequest += PlayerConnected;
+
 
                 SecurityProtocols();
 
@@ -45,55 +56,67 @@ namespace SEOS.Core
                 else
                 {
                     if(DevEnabled()) ModStatus("Network");
+
                 }
 
                 if (!DedicatedServer)
-                    subscribeCustomControls(true);
+                MyAPIGateway.TerminalControls.CustomControlGetter -= TerminalControls_CustomControlGetter;
+                MyAPIGateway.TerminalControls.CustomActionGetter -= TerminalControls_CustomActionGetter;
+
+                MyAPIGateway.TerminalControls.CustomControlGetter += TerminalControls_CustomControlGetter;
+                MyAPIGateway.TerminalControls.CustomActionGetter += TerminalControls_CustomActionGetter;
 
                 if (MpActive)
                 {
-                   syncDist(250000);
+                    SinkDist = MyAPIGateway.Session.SessionSettings.SyncDistance;
+                    SinkDistSqr = SinkDist * SinkDist;
+                    SinkBufferedDistSqr = SinkDistSqr + 250000;
+                    SessionLog.Line($"{Bot} SinkDistSqr:{SinkDistSqr} - SinkBufferedDistSqr:{SinkBufferedDistSqr} - DistNorm:{SinkDist}");
+                    //MyAPIGateway.Utilities.ShowMessage(Bot, $"\nSinkDistSqr:{SinkDistSqr} -\n SinkBufferedDistSqr:{SinkBufferedDistSqr} -\n DistNorm:{SinkDist}");
+
                 }
                 else
                 {
-                    syncDist(250000);
+                    SinkDist = MyAPIGateway.Session.SessionSettings.ViewDistance;
+                    SinkDistSqr = SinkDist * SinkDist;
+                    SinkBufferedDistSqr = SinkDistSqr + 250000;
+                    SessionLog.Line($"{Bot} SinkDistSqr:{SinkDistSqr} - SinkBufferedDistSqr:{SinkBufferedDistSqr} - DistNorm:{SinkDist}");
+                   // MyAPIGateway.Utilities.ShowMessage(Bot, $"SinkDistSqr:{SinkDistSqr} - SinkBufferedDistSqr:{SinkBufferedDistSqr} - DistNorm:{SinkDist}");
+
                 }
 
                 if (IsServer)
                 {
-                    SessionLog.Line($"{Bot} Updated Publisher Config");
+                    SessionLog.Line($"{Bot} Update Publisher Config");
+
+
                     ConfigUtils.PrepPublisherConfigFile(WorkshopId, ver);
                     ConfigUtils.ReadPublisherConfigFile(WorkshopId);
-                    
+
+
+                    SessionLog.Line($"{Bot} Update SEOS Configs");
                     foreach (string name in SEOSI.GetTerminalNames())
                     {
                         if (name.Equals("ROMBurner"))
                         {
-                            SessionLog.Line($"{Bot} Updated SEOS Config");
                             //ROMBurner.UpdateOutdatedROMConfigFile(name, ver);
                             //ROMBurner.PrepROMBurnerConfigFile(name, ver);
                             //ROMBurner.ReadROMBurnerConfigFile(name, ver);
                         }
                         if (name.Equals("OSBurner"))
                         {
-                            SessionLog.Line($"{Bot} Updated SEOS Config");
-
                             //OSBurner.UpdateOutdatedConfigFile(name, ver);
-                            // OSBurner.PrepOSBurnerConfigFile(name, ver);
+                           // OSBurner.PrepOSBurnerConfigFile(name, ver);
                             //OSBurner.ReadOSBurnerConfigFile(name, ver);
                         }
                         if (name.Equals("SEOSTerminal"))
                         {
-                            SessionLog.Line($"{Bot} Updated SEOS Config");
-
                             //SEOSTerminal.UpdateOutdatedConfigFile(name, ver);
                             //SEOSTerminal.PrepTerminalConfigFile(name, ver);
                             //SEOSTerminal.ReadTerminalConfigFile(name, ver);
                         }
                         if (name.Equals("SEOSThruster"))
                         {
-                            SessionLog.Line($"{Bot} Updated SEOS Config");
-
                             //SEOSThruster.UpdateOutdatedThrusterConfigFile(name, ver);
                             //SEOSThruster.PrepSEOSThrusterConfigFile(name, ver);
                             //SEOSThruster.ReadSEOSThrusterConfigFile(name, ver);
@@ -136,8 +159,6 @@ namespace SEOS.Core
             }
             catch (Exception ex) { SessionLog.Line($"Exception in BeforeStart: {ex}"); }
         }
-
-
 
         public override void Init(MyObjectBuilder_SessionComponent sessionComponent)
         {
@@ -182,69 +203,6 @@ namespace SEOS.Core
         #endregion
 
         #region Player Events
-
-        public void preInit()
-        {
-
-            SessionLog.Line($"{Bot} Initialize SEOS Client");
-            SessionLog.Init(LogName + ".log");
-
-            MpActive = MyAPIGateway.Multiplayer.MultiplayerActive;
-            IsServer = MyAPIGateway.Multiplayer.IsServer;
-            DedicatedServer = MyAPIGateway.Utilities.IsDedicated;
-
-        }
-
-        public void subscribeMessageHandler(bool sub)
-        {
-            if(sub)
-            {
-                MyAPIGateway.Multiplayer.RegisterMessageHandler(PACKET_ID, ReceivedPacket);
-            }
-            else
-            {
-                MyAPIGateway.Multiplayer.UnregisterMessageHandler(PACKET_ID, ReceivedPacket);
-
-            }
-        }
-
-        public void subscribePlayerEvents(bool sub)
-        {
-            if (sub)
-            {
-                MyVisualScriptLogicProvider.PlayerDisconnected += PlayerDisconnected;
-                MyVisualScriptLogicProvider.PlayerRespawnRequest += PlayerConnected;
-            }
-            else
-            {
-                MyVisualScriptLogicProvider.PlayerDisconnected -= PlayerDisconnected;
-                MyVisualScriptLogicProvider.PlayerRespawnRequest -= PlayerConnected;
-            }
-
-        }
-
-        public void subscribeCustomControls(bool sub)
-        {
-            if (sub)
-            {
-                MyAPIGateway.TerminalControls.CustomControlGetter += TerminalControls_CustomControlGetter;
-                MyAPIGateway.TerminalControls.CustomActionGetter += TerminalControls_CustomActionGetter;
-            }
-            else
-            {
-                MyAPIGateway.TerminalControls.CustomControlGetter -= TerminalControls_CustomControlGetter;
-                MyAPIGateway.TerminalControls.CustomActionGetter -= TerminalControls_CustomActionGetter;              
-            }
-        }
-
-        public void syncDist(int dist)
-        {
-            SinkDist = MyAPIGateway.Session.SessionSettings.SyncDistance;
-            SinkDistSqr = SinkDist * SinkDist;
-            SinkBufferedDistSqr = SinkDistSqr + dist;
-            SessionLog.Line($"{Bot} SinkDistSqr:{SinkDistSqr} - SinkBufferedDistSqr:{SinkBufferedDistSqr} - DistNorm:{SinkDist}");
-        }
-
         private void  PlayerConnected(long id)
         {
             try
@@ -329,8 +287,13 @@ namespace SEOS.Core
         protected override void UnloadData()
         {
             Instance = null;
-            subscribeMessageHandler(false);
-            subscribePlayerEvents(false);
+
+            MyAPIGateway.Multiplayer.UnregisterMessageHandler(PACKET_ID, ReceivedPacket);
+
+
+            MyVisualScriptLogicProvider.PlayerDisconnected -= PlayerDisconnected;
+            MyVisualScriptLogicProvider.PlayerRespawnRequest -= PlayerConnected;
+
             SessionLog.Line("Logging stopped.");
             SessionLog.Close();
         }
