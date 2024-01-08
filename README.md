@@ -1,6 +1,6 @@
 # Space Engineers Operating System (SEOS)
 
-The provided code constitutes a partial class named "Session" within the Space Engineers Operating System (SEOS) mod. This modular and well-organized codebase contains methods that cover a spectrum of functionalities, including comprehensive initialization tasks, multiplayer event handling such as player connections and disconnections, server status updates, and subscription management for custom controls. The code showcases a systematic approach to managing various aspects of the mod, ensuring efficient synchronization, enforcing security protocols, and handling admin-related tasks. Additionally, the code exhibits best practices such as error handling and logging to maintain robustness in the execution of SEOS within the Space Engineers game environment.
+Welcome to the SEOS mod repository! SEOS is designed to enhance the gameplay experience in Space Engineers by introducing an operating system within the game.
 
 ## Table of Contents
 - [Introduction](#introduction)
@@ -11,9 +11,7 @@ The provided code constitutes a partial class named "Session" within the Space E
 - [License](#license)
 
 ## Introduction
-
-Welcome to the SEOS mod repository! SEOS is designed to enhance the gameplay experience in Space Engineers by introducing an operating system within the game.
-
+The provided code constitutes a partial class named "Session" within the Space Engineers Operating System (SEOS) mod. This modular and well-organized codebase contains methods that cover a spectrum of functionalities, including comprehensive initialization tasks, multiplayer event handling such as player connections and disconnections, server status updates, and subscription management for custom controls. The code showcases a systematic approach to managing various aspects of the mod, ensuring efficient synchronization, enforcing security protocols, and handling admin-related tasks. Additionally, the code exhibits best practices such as error handling and logging to maintain robustness in the execution of SEOS within the Space Engineers game environment.
 ## Features
 
 - **Operating System:** SEOS brings a fully functional operating system to Space Engineers.
