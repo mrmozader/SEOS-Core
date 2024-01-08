@@ -7,14 +7,7 @@
     using VRage.ModAPI;
     using VRage.Utils;
     using SEOS.Network.Esentials;
-    //using SEOS.Network.Burners.SeralizedValues;
-    //using SEOS.Network.Terminals.SerializedValues;
-    //using SEOS.Hardware.Burners;
-    //using SEOS.Hardware.Terminals;
-    //using SEOS.Hardware.Thrusters;
-    using System.IO;
-    using Sandbox.ModAPI;
-    using Sandbox.Definitions;
+
 
     public partial class Session
     {
