@@ -6,8 +6,14 @@ namespace SEOS.Core
     using VRage.Game.Components;
     using Sandbox.ModAPI.Interfaces.Terminal;
 
+    /// <summary>
+    /// Partial class representing the main session component responsible for managing various functionalities.
+    /// </summary>
     public partial class Session : MySessionComponentBase
     {
+        /// <summary>
+        /// Custom action getter for terminal controls, filtering actions based on block subtype.
+        /// </summary>
         static void TerminalControls_CustomActionGetter(IMyTerminalBlock block, List<IMyTerminalAction> actions)
         {
             if (block is IMyAssembler)
@@ -17,41 +23,32 @@ namespace SEOS.Core
 
                 foreach (var action in actions)
                 {
-                    //SessionLog.Line("Action: " + action.Id);
                     switch (subtype)
                     {
                         case "OSBurner":
-                            if (
-                            action.Id.StartsWith("OnOff") ||
-                            action.Id.StartsWith("ShowInTerminal") ||
-                            action.Id.StartsWith("ShowInToolbarConfig") ||
-                            action.Id.StartsWith("ShowInInventory") ||
-                            action.Id.StartsWith("ShowOnHUD") ||
-                            action.Id.StartsWith("UseConveyor") ||
-                            action.Id.StartsWith("SEOS")
-                            )
+                            if (action.Id.StartsWith("OnOff") ||
+                                action.Id.StartsWith("ShowInTerminal") ||
+                                action.Id.StartsWith("ShowInToolbarConfig") ||
+                                action.Id.StartsWith("ShowInInventory") ||
+                                action.Id.StartsWith("ShowOnHUD") ||
+                                action.Id.StartsWith("UseConveyor") ||
+                                action.Id.StartsWith("SEOS"))
                             {
                                 itemsToRemove.Add(action);
                             }
-                        break;
-
+                            break;
                         case "ROMBurner":
-                            if (
-                            action.Id.StartsWith("OnOff") ||
-                            action.Id.StartsWith("ShowInTerminal") ||
-                            action.Id.StartsWith("ShowInToolbarConfig") ||
-                            action.Id.StartsWith("ShowInInventory") ||
-                            action.Id.StartsWith("ShowOnHUD") ||
-                            action.Id.StartsWith("UseConveyor") ||
-                            action.Id.StartsWith("SEOS")
-                            )
+                            if (action.Id.StartsWith("OnOff") ||
+                                action.Id.StartsWith("ShowInTerminal") ||
+                                action.Id.StartsWith("ShowInToolbarConfig") ||
+                                action.Id.StartsWith("ShowInInventory") ||
+                                action.Id.StartsWith("ShowOnHUD") ||
+                                action.Id.StartsWith("UseConveyor") ||
+                                action.Id.StartsWith("SEOS"))
                             {
                                 itemsToRemove.Add(action);
                             }
-                        break;
-
-
-
+                            break;
                     }
                 }
 
@@ -61,6 +58,10 @@ namespace SEOS.Core
                 }
             }
         }
+
+        /// <summary>
+        /// Custom control getter for terminal controls, filtering controls based on block subtype.
+        /// </summary>
         static void TerminalControls_CustomControlGetter(IMyTerminalBlock block, List<IMyTerminalControl> controls)
         {
             if (block is IMyAssembler)
@@ -71,17 +72,14 @@ namespace SEOS.Core
 
                 foreach (var control in controls)
                 {
-                    //SessionLog.Line("Control: " + control.Id);
                     switch (subtype)
                     {
                         case "OSBurner":
                             switch (control.Id)
                             {
-                                //case "OnOff":
                                 case "ShowInTerminal":
                                 case "ShowInToolbarConfig":
                                 case "ShowInInventory":
-                                //case "Name":
                                 case "ShowOnHUD":
                                 case "UseConveyor":
                                 case "CustomData":
@@ -94,18 +92,15 @@ namespace SEOS.Core
                                         break;
                                     else if (control is IMyTerminalControlSeparator && separatorsToKeep-- >= 0)
                                         break;
-                                    //itemsToRemove.Add(control);
                                     break;
                             }
                             break;
                         case "ROMBurner":
                             switch (control.Id)
                             {
-                                //case "OnOff":
                                 case "ShowInTerminal":
                                 case "ShowInToolbarConfig":
                                 case "ShowInInventory":
-                                //case "Name":
                                 case "ShowOnHUD":
                                 case "UseConveyor":
                                 case "CustomData":
@@ -118,17 +113,15 @@ namespace SEOS.Core
                                         break;
                                     else if (control is IMyTerminalControlSeparator && separatorsToKeep-- >= 0)
                                         break;
-                                    //itemsToRemove.Add(control);
                                     break;
                             }
                             break;
-
                     }
                 }
 
-                foreach (var action in itemsToRemove)
+                foreach (var control in itemsToRemove)
                 {
-                    controls.Remove(action);
+                    controls.Remove(control);
                 }
             }
 
@@ -140,7 +133,6 @@ namespace SEOS.Core
 
                 foreach (var control in controls)
                 {
-                   // SessionLog.Line("Control: " + control.Id);
                     switch (subtype)
                     {
                         case "SEOSTerminal":
@@ -154,7 +146,7 @@ namespace SEOS.Core
                                 case "ShowOnHUD":
                                 case "UseConveyor":
                                 case "CustomData":
-                                     itemsToRemove.Add(control);
+                                    itemsToRemove.Add(control);
                                     break;
                                 default:
                                     if (control.Id.StartsWith("SEOS"))
@@ -163,35 +155,35 @@ namespace SEOS.Core
                                         break;
                                     else if (control is IMyTerminalControlSeparator && separatorsToKeep-- >= 0)
                                         break;
-                                    //itemsToRemove.Add(control);
                                     break;
                             }
                             break;
-
-
                     }
                 }
 
-                foreach (var action in itemsToRemove)
+                foreach (var control in itemsToRemove)
                 {
-                    controls.Remove(action);
+                    controls.Remove(control);
                 }
             }
         }
+
+        /// <summary>
+        /// Appends a condition to the given action based on specific criteria.
+        /// </summary>
         public static void AppendConditionToAction<T>(Func<IMyTerminalAction, bool> actionFindCondition, Func<IMyTerminalAction, IMyTerminalBlock, bool> actionEnabledAppend)
         {
             List<IMyTerminalAction> actions;
             MyAPIGateway.TerminalControls.GetActions<T>(out actions);
-            foreach (var a in actions)
+            foreach (var action in actions)
             {
-                if (actionFindCondition(a))
+                if (actionFindCondition(action))
                 {
-                    var existingAction = a.Enabled;
+                    var existingAction = action.Enabled;
 
-                    a.Enabled = (b) => (existingAction == null ? true : existingAction.Invoke(b)) && actionEnabledAppend(a, b);
+                    action.Enabled = (block) => (existingAction == null ? true : existingAction.Invoke(block)) && actionEnabledAppend(action, block);
                 }
             }
         }
     }
 }
-

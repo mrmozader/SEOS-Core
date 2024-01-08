@@ -5,8 +5,15 @@
     using VRageMath;
     using SEOS.Network.Base;
     using SEOS.Network.Enforcement;
+
+    /// <summary>
+    /// Partial class representing the main session component responsible for managing various functionalities.
+    /// </summary>
     public partial class Session
     {
+        /// <summary>
+        /// Requests global enforcement settings from the server.
+        /// </summary>
         internal void RequestGlobalEnforcement(ulong requestorId)
         {
             try
@@ -15,26 +22,29 @@
                 ModEnforcement.Version = ver;
                 var bytes = MyAPIGateway.Utilities.SerializeToBinary(new DataGlobalEnforce(0, ModEnforcement));
                 MyAPIGateway.Multiplayer.SendMessageToServer(PACKET_ID, bytes, true);
-
             }
-            catch (Exception ex) { SessionLog.Line($"Exception in PacketizeGlobalEnforcementToClient: {ex}"); }
+            catch (Exception ex) { SessionLog.Line($"Exception in RequestGlobalEnforcement: {ex}"); }
         }
 
+        /// <summary>
+        /// Requests admin enforcement settings from the server.
+        /// </summary>
         internal void RequestAdminEnforcement(ulong requestorId)
         {
             try
             {
-
                 Admins[requestorId].SenderId = requestorId;
                 Admins[requestorId].Version = ver;
 
                 var bytes = MyAPIGateway.Utilities.SerializeToBinary(new DataAdminEnforce(0, Admins[requestorId]));
                 MyAPIGateway.Multiplayer.SendMessageToServer(PACKET_ID, bytes, true);
-
             }
-            catch (Exception ex) { SessionLog.Line($"Exception in PacketizeAdminEnforcementToClient: {ex}"); }
+            catch (Exception ex) { SessionLog.Line($"Exception in RequestAdminEnforcement: {ex}"); }
         }
 
+        /// <summary>
+        /// Sends a packet to all clients within range of the given functional block.
+        /// </summary>
         internal void PacketizeToClientsInRange(IMyFunctionalBlock block, PacketBase packet)
         {
             try
@@ -51,6 +61,9 @@
             catch (Exception ex) { SessionLog.Line($"Exception in PacketizeToClientsInRange: {ex}"); }
         }
 
+        /// <summary>
+        /// Processes a received packet and sends it to all clients within range.
+        /// </summary>
         private void ReceivedPacket(byte[] rawData)
         {
             try
@@ -64,7 +77,6 @@
                         var id = p.SteamUserId;
                         if (id != localSteamId && id != packet.SenderId && Vector3D.DistanceSquared(p.GetPosition(), packet.Entity.PositionComp.WorldAABB.Center) <= SinkBufferedDistSqr)
                             MyAPIGateway.Multiplayer.SendMessageTo(PACKET_ID, rawData, p.SteamUserId);
-                            
                     }
                 }
             }

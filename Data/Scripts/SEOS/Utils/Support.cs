@@ -12,6 +12,17 @@ namespace SEOS.Support
     using Sandbox.Definitions;
     using System.Linq;
 
+    /*
+    The SEOS.Support namespace contains two classes, RunningAverage and UtilsStatic, designed to support Space Engineers Operating System (SEOS) functionality.
+    The RunningAverage class implements a circular buffer for calculating running averages efficiently, crucial for SEOS data processing.
+    On the other hand, the UtilsStatic class provides a collection of utility methods for various tasks within SEOS.
+    These tasks include updating terminal ownership, performing distance checks between a block and the player,
+    determining emissive colors and shield colors based on percentages, retrieving lists of functional, thruster,
+    and cube block subtype IDs, obtaining all block types, and populating a dictionary with block type and subtype information.
+    The code also incorporates Levenshtein distance calculations, fuzzy search algorithms, and NGram similarity computations to facilitate dynamic block type and subtype identification within SEOS.
+    Overall, these classes contribute to the robust functionality and versatility of SEOS through efficient data processing and utility methods.
+    */
+
     internal class RunningAverage
     {
         private readonly int _size;
