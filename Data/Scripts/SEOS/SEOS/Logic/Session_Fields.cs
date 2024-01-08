@@ -7,6 +7,7 @@
     using VRage.ModAPI;
     using VRage.Utils;
     using SEOS.Network.Esentials;
+    using static System.Net.WebRequestMethods;
 
 
     public partial class Session
@@ -129,8 +130,8 @@
 
         internal readonly HashSet<ulong> ApprovedAdmins = new HashSet<ulong>()
         {
-            76561198143476458,
-            76561197972170961,
+            76561199441414915,// MrMozader steam ID
+            76561198008375395,//Naemoh's steam ID
         };
 
     }

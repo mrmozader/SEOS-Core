@@ -24,9 +24,6 @@ namespace SEOS.Core
         {
             try
             {
-                // Update server-related status variables
-                UpdateServerStatus();
-
                 // Subscribe to multiplayer message handler
                 UpdateMessageHandlerSubscription(true);
 
@@ -52,82 +49,29 @@ namespace SEOS.Core
                 if (!DedicatedServer)
                     UpdateCustomControlsSubscription(true);
 
-                // Update synchronization distance calculations based on multiplayer status
-                UpdateSyncDistanceCalculations(250000);
+                // Initialize synchronization distance calculations based on multiplayer status
+                InitializeSyncDistanceCalculations(250000);
 
                 // Additional setup tasks for servers
                 if (IsServer)
                 {
-                    SessionLog.Line($"{Bot} Updated Publisher Config");
-
-                    // Prepare and read configuration files for various terminal types
-                    foreach (string name in SEOSI.GetTerminalNames())
-                    {
-                        SessionLog.Line($"{Bot} Updated SEOS Config :{name}");
-                        // Uncomment and complete the following lines for each terminal type
-                        /*
-                        if (name.Equals("ROMBurner"))
-                        {
-                            //ROMBurner.UpdateOutdatedROMConfigFile(name, ver);
-                            //ROMBurner.PrepROMBurnerConfigFile(name, ver);
-                            //ROMBurner.ReadROMBurnerConfigFile(name, ver);
-                        }
-                        if (name.Equals("OSBurner"))
-                        {
-                            //OSBurner.UpdateOutdatedConfigFile(name, ver);
-                            //OSBurner.PrepOSBurnerConfigFile(name, ver);
-                            //OSBurner.ReadOSBurnerConfigFile(name, ver);
-                        }
-                        if (name.Equals("SEOSTerminal"))
-                        {
-                            //SEOSTerminal.UpdateOutdatedConfigFile(name, ver);
-                            //SEOSTerminal.PrepTerminalConfigFile(name, ver);
-                            //SEOSTerminal.ReadTerminalConfigFile(name, ver);
-                        }
-                        if (name.Equals("SEOSThruster"))
-                        {
-                            //SEOSThruster.UpdateOutdatedThrusterConfigFile(name, ver);
-                            //SEOSThruster.PrepSEOSThrusterConfigFile(name, ver);
-                            //SEOSThruster.ReadSEOSThrusterConfigFile(name, ver);
-                        }
-                        */
-                    }
-
-                    // Generate admin configuration if debug mode is enabled and mod is not published
-                    if (IsDebugModeEnabled() && !IsModPublished())
-                    {
-                        SessionLog.Line($"{Bot} Generating Admin Config");
-                        Admins.TryAdd(MyAPIGateway.Session.Player.SteamUserId, SEOSI.GetAdmin(MyAPIGateway.Session.Player.SteamUserId));
-                        ConfigUtils.PrepAdminConfigFile(MyAPIGateway.Session.Player.SteamUserId, ver);
-                        ConfigUtils.ReadAdminConfigFile(MyAPIGateway.Session.Player.SteamUserId);
-                    }
+                    InitializeConfigs(SEOSI.GetTerminalNames());
                 }
                 else
                 {
                     // Request global enforcement if not a server
                     RequestGlobalEnforcement(MyAPIGateway.Multiplayer.MyId);
 
-                    // Generate dummy admin configuration if not already an admin
-                    if (!Admins.ContainsKey(MyAPIGateway.Multiplayer.MyId) && SEOSI.GetAdminIDs().Contains(MyAPIGateway.Multiplayer.MyId))
-                    {
-                        Admin AdminEnforcement = new Admin();
-                        AdminEnforcement.SenderId = MyAPIGateway.Multiplayer.MyId;
-                        AdminEnforcement.Version = 0;
-                        AdminEnforcement.Established = 0;
-                        AdminEnforcement.ModId = 0;
-                        AdminEnforcement.Role = 0;
-                        AdminEnforcement.Plog = false;
-                        Admins.TryAdd(MyAPIGateway.Multiplayer.MyId, AdminEnforcement);
-                        if (Admins[MyAPIGateway.Multiplayer.MyId].SenderId == MyAPIGateway.Multiplayer.MyId)
-                            SessionLog.Line($"{Bot} Generated Dummy Admin Config");
-                    }
+                    // Initialize admin if not already an admin
+                    InitializeAdmin();
                 }
             }
             catch (Exception ex) { SessionLog.Line($"Exception in BeforeStart: {ex}"); }
         }
 
         /// <summary>
-        /// Overrides the base class method to initialize the Space Engineers Operating System (S.E.O.S.) log.
+        /// Overrides the base class method to initialize the Space Engineers Operating System (S.E.O.S.) log
+        /// and configure initial server-related status.
         /// </summary>
         /// <param name="sessionComponent">The session component object builder.</param>
         public override void Init(MyObjectBuilder_SessionComponent sessionComponent)
@@ -135,14 +79,18 @@ namespace SEOS.Core
             try
             {
                 // Log initialization of S.E.O.S. log
-                SessionLog.Line($"{Bot} Initialize S.E.O.S. Log");
+                SessionLog.Line($"{Bot} Initializing S.E.O.S. Log");
                 SessionLog.Init(LogName + ".log");
+
+                // Configure initial server-related status variables
+                InitializeServerStatus();
             }
             catch (Exception ex)
             {
                 LogMessage($"Exception in Init: {ex.Message}");
             }
         }
+
 
         /// <summary>
         /// Overrides the base class method to perform pre-simulation updates. Manages various counts and triggers,
@@ -218,6 +166,9 @@ namespace SEOS.Core
             try
             {
                 Instance = null;
+                // Additional setup tasks for non-dedicated servers
+                if (!DedicatedServer)
+                UpdateCustomControlsSubscription(false);
                 UpdateMessageHandlerSubscription(false);
                 UpdatePlayerEventsSubscription(false);
                 SessionLog.Line("Logging stopped.");

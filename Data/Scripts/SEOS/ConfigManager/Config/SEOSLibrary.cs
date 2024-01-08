@@ -3,6 +3,7 @@
     using System.Collections.Generic;
     using VRageMath;
     using SEOS.Network.Esentials;
+    using System;
 
     public  static partial class SEOSI
     {
@@ -69,12 +70,16 @@
         private static readonly Dictionary<ulong, Mod> _Mod = new Dictionary<ulong, Mod>
         {
             
-            [2030761420] = new Mod { Liscense = "NKFNQdYFF5uJiIueeVlrMvgeFpA9EPWt", ModName = "GSFOS", GlobalLog = false, MpAnimate = true, Vdist = 500 },
-            [1729063426] = new Mod { Liscense = "NKFNQdYFF5uJiIueeVlrMvgeFpA9EPWt", ModName = "GSFOS DEV", GlobalLog = true, MpAnimate = true, Vdist = 500 },
+            [2030761420] = new Mod { Liscense = "NKFNQdYFF5uJiIueeVlrMvgeFpA9EPWt", ModName = "SEOS", GlobalLog = false, MpAnimate = true, Vdist = 500 },
+            [1729063426] = new Mod { Liscense = "NKFNQdYFF5uJiIueeVlrMvgeFpA9EPWt", ModName = "SEOS DEV", GlobalLog = true, MpAnimate = true, Vdist = 500 },
             [1520968121] = new Mod { Liscense = "fD7D7jvum7I1BID5HUhi8I87Sl2r3Agy", ModName = "REBEL GAMES", GlobalLog = false, MpAnimate = true, Vdist = 500 },
 
         };
 
+        private static readonly Dictionary<String, ModGuid> _Modguid = new Dictionary<String, ModGuid>
+        {
+
+        };
 
         public static List<string> GetTerminalNames()
         {

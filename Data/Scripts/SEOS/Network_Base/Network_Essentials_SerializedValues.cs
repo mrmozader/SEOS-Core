@@ -3,6 +3,7 @@
     using ProtoBuf;
     using VRageMath;
     using System.ComponentModel;
+    using System;
 
     [ProtoContract]
     public class Info
@@ -93,7 +94,7 @@
         [ProtoMember(1)] public bool AutoBurnButtonVisible = false;
         [ProtoMember(2)] public bool AutoBurnButtonModifiable = false;
         [ProtoMember(3)] public bool AutoBurnButtonEnabled = false;
-        public override string ToString() { return "AutoBurn"; }
+        public override string ToString() { return "AfterBurner"; }
     }
 
     [ProtoContract]
@@ -118,6 +119,13 @@
         [ProtoMember(5)] public int Vdist = 250000;
         [ProtoMember(6)] public int Version = -1;
         [ProtoMember(7)] public ulong SenderId = 0;
+        public override string ToString() { return ""; }
+    }
+
+    [ProtoContract]
+    public class ModGuid
+    {
+        [ProtoMember(1)] public readonly Guid guid = new Guid();
         public override string ToString() { return ""; }
     }
 
