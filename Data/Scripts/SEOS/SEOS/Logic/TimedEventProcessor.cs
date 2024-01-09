@@ -57,10 +57,8 @@
         static void Handle10SecondTrigger()
         {
             // Custom action for 10 seconds
-            HandleTrigger("10 seconds", () => {
-                // Your custom action logic for 10 seconds here
-                SessionLog.Line("Handling 10 seconds");
-            });
+            SessionLog.Line("Handling 10 seconds");
+
         }
 
         static void Handle20SecondTrigger()
