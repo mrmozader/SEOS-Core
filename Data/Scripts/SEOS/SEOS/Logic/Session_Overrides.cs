@@ -81,11 +81,11 @@ namespace SEOS.Core
 
 
         /// <summary>
-        /// Overrides the base class method to execute pre-simulation updates for the Space Engineers Operating System (SEOS) mod.
-        /// Manages internal counters and triggers, including security initialization checks, tick count updates based on elapsed play time,
-        /// and handling of admin enforcement requests. The method incorporates a time-based trigger system to efficiently handle periodic tasks,
-        /// such as requesting admin enforcement, displaying admin messages, and resetting counters. Exception handling is implemented to log
-        /// and report any unexpected issues during the pre-simulation update process, ensuring robust and fault-tolerant mod functionality.
+        /// This method overrides the base class to manage pre-simulation updates for the Space Engineers Operating System (SEOS) mod.
+        /// It handles internal counters and triggers, including security checks, updating the tick count based on elapsed playtime, and
+        /// managing admin enforcement requests. The method utilizes a time-based trigger system for efficient handling of periodic tasks,
+        /// such as requesting admin enforcement, displaying admin messages, and resetting counters. Robust exception handling is implemented
+        /// to log and report unexpected issues during the pre-simulation update process, ensuring the mod's functionality remains stable.
         /// </summary>
         public override void UpdateBeforeSimulation()
         {
