@@ -76,10 +76,6 @@
 
         };
 
-        private static readonly Dictionary<String, ModGuid> _Modguid = new Dictionary<String, ModGuid>
-        {
-
-        };
 
         public static List<string> GetTerminalNames()
         {

@@ -123,6 +123,7 @@
     <Compile Include="SEOS\Logic\Session_Player_Events.cs" />
     <Compile Include="SEOS\Logic\Session_Server_Management.cs" />
     <Compile Include="SEOS\Logic\Session_Server_Subscriptions.cs" />
+    <Compile Include="SEOS\Logic\TimedEventProcessor.cs" />
     <Compile Include="SEOS\UI\Base\Terminal_UI_Session_Custom_Config.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SEOS\Logic\Session_Fields.cs" />

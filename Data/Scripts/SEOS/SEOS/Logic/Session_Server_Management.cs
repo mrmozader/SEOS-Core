@@ -12,6 +12,49 @@
 
     public partial class Session
     {
+
+        /// <summary>
+        /// Checks for mod compromise and displays mod status accordingly.
+        /// </summary>
+        /// <remarks>
+        /// This method first checks if the mod is compromised. If compromised, it displays security-related mod status
+        /// and prioritizes addressing the security concern. If the mod is not compromised, it checks if debug mode is enabled.
+        /// If debug mode is enabled, it displays network-related mod status. Additional code can be added for any other mod-related checks or actions.
+        /// </remarks>
+        private void CheckAndDisplayModStatus()
+        {
+            try
+            {
+                // Check if the mod is compromised
+                if (IsModCompromised())
+                {
+                    // If compromised, display security-related mod status
+                    DisplayModStatus("Security");
+
+                    // Exit the method to prioritize addressing the security concern
+                    return;
+                }
+                else
+                {
+                    // If not compromised, check if debug mode is enabled
+                    if (IsDebugModeEnabled())
+                    {
+                        // If debug mode is enabled, display network-related mod status
+                        DisplayModStatus("Network");
+                    }
+                    // No need for an else statement here as the method continues
+                    // to execute when the mod is not compromised and debug mode is disabled
+                }
+                // Additional code can be added here for any other mod-related checks or actions
+            }
+            catch (Exception ex)
+            {
+                // Log and handle any exceptions that occur during mod status checking
+                LogMessage($"Error in CheckAndDisplayModStatus: {ex.Message}");
+            }
+        }
+
+
         /// <summary>
         /// Initializes server-related status variables.
         /// </summary>
@@ -82,6 +125,41 @@
             }
 
         }
+
+        /// <summary>
+        /// Perform additional setup tasks for servers.
+        /// </summary>
+        /// <remarks>
+        /// This method checks if the current instance is a server. If it is, it initializes configurations based on
+        /// terminal names obtained from SEOSI. If not a server, it requests global enforcement using the player's ID
+        /// and initializes admin if not already an admin. Any exceptions during the process are logged and handled.
+        /// </remarks>
+        private void AdditionalSetupTasksForServers()
+        {
+            try
+            {
+                // Additional setup tasks for servers
+                if (IsServer)
+                {
+                    // Initialize configurations based on terminal names
+                    InitializeConfigs(SEOSI.GetTerminalNames());
+                }
+                else
+                {
+                    // Request global enforcement if not a server
+                    RequestGlobalEnforcement(MyAPIGateway.Multiplayer.MyId);
+
+                    // Initialize admin if not already an admin
+                    InitializeAdmin();
+                }
+            }
+            catch (Exception ex)
+            {
+                // Log and handle any exceptions that occur during additional setup tasks
+                LogMessage($"Error in AdditionalSetupTasksForServers: {ex.Message}");
+            }
+        }
+
 
         public void InitializeAdmin()
         {
