@@ -7,7 +7,6 @@
     using VRage.ModAPI;
     using VRage.Utils;
     using SEOS.Network.Esentials;
-    using static System.Net.WebRequestMethods;
 
 
     public partial class Session

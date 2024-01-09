@@ -95,7 +95,7 @@ namespace SEOS.Core
                 if (!SecurityInit) return;
 
                 // Update tick count based on elapsed play time
-                Tick = (uint)MyAPIGateway.Session.ElapsedPlayTime.TotalMilliseconds / MyEngineConstants.UPDATE_STEP_SIZE_IN_MILLISECONDS;
+                Tick = (uint)(MyAPIGateway.Session.ElapsedPlayTime.TotalMilliseconds / MyEngineConstants.UPDATE_STEP_SIZE_IN_MILLISECONDS);
 
                 // Increment counts and handle triggers
                 if (_count++ == 59)
@@ -104,7 +104,8 @@ namespace SEOS.Core
                     _lCount++;
 
                     // Execute action for the current count if it exists in the dictionary
-                    if (SecondTriggers.TryGetValue(_lCount, out var action))
+                    Action action;
+                    if (SecondTriggers.TryGetValue(_lCount, out action))
                     {
                         action.Invoke();
                     }
@@ -115,7 +116,8 @@ namespace SEOS.Core
                         _eCount++;
 
                         // Execute action for the current count if it exists in the dictionary
-                        if (HourTriggers.TryGetValue(_eCount, out var hourAction))
+                        Action hourAction;
+                        if (HourTriggers.TryGetValue(_eCount, out hourAction))
                         {
                             hourAction.Invoke();
                         }
@@ -128,6 +130,7 @@ namespace SEOS.Core
                 SessionLog.Line($"Exception in UpdateBeforeSimulation: {ex.Message}");
             }
         }
+
 
 
         /// <summary>
